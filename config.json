@@ -1,0 +1,30 @@
+{
+  "uri": "mongodb://localhost:27017",
+  "dumpDir": "dump",
+  "exclude": [
+    "admin",
+    "config",
+    "local"
+  ],
+  "dbs": [
+    {
+      "name": "test",
+      "dump": true,
+      "collections": [
+        {
+          "name": "test",
+          "documents": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "age",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
