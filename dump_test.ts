@@ -6,7 +6,7 @@ Deno.test(async function runDeezDumps() {
   const testConf: Config = {
     dumpDir: "./test_dump",
     uri: "mongodb://localhost:27017",
-    exclude: [],
+    exclude: ["admin", "config", "local"],
     dbs: [
       {
         name: "test",
@@ -26,5 +26,5 @@ Deno.test(async function runDeezDumps() {
     assertEquals(e, null);
   }
 
-  Deno.removeSync("./test_dump", { recursive: true });
+  // Deno.removeSync("./test_dump", { recursive: true });
 });

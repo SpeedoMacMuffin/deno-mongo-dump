@@ -11,10 +11,10 @@ export const dump = async (config: Config) => {
 
   await client.connect(uri);
 
-  const dbs = await client.listDatabases();
-  const dbNames = dbs.map((db) => db.name).filter((db) =>
-    !exclude.includes(db)
-  );
+  const dbs = await client.listDatabases({
+    filter: { name: { $nin: exclude } },
+  });
+  const dbNames = dbs.map((db) => db.name);
   console.log(dbNames);
 
   for (let i = 0; i < dbNames.length; i++) {
@@ -39,7 +39,7 @@ export const dump = async (config: Config) => {
       const json = JSON.stringify(documents);
       const fExists: boolean = await exists(`${dumpDir}`);
       if (!fExists) {
-        Deno.mkdirSync(`${config.dumpDir}`);
+        Deno.mkdirSync(`${dumpDir}`);
       }
       await Deno.writeTextFile(
         `./${dumpDir}/${dbNames[i]}.${collectionNames[j]}.json`,

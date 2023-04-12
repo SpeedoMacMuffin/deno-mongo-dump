@@ -1,11 +1,6 @@
 {
   "uri": "mongodb://localhost:27017",
   "dumpDir": "dump",
-  "exclude": [
-    "admin",
-    "config",
-    "local"
-  ],
   "dbs": [
     {
       "name": "test",

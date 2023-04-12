@@ -11,7 +11,7 @@ const dbConfigSchema = z.object({
 
 export const configSchema = z.object({
   dumpDir: z.string(),
-  exclude: z.array(z.string()).optional().default(["admin", "config", "local"]),
+  exclude: z.array(z.string()).default(["admin", "config", "local"]),
   uri: z.string(),
   dbs: z.array(dbConfigSchema).min(1),
 });
